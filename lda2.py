@@ -38,7 +38,7 @@ corpus = [dictionary.doc2bow(text) for text in texts]
 #corpora.MmCorpus.serialize('deerwester.mm', corpus) # store to disk, for later use
 
 if (sys.argv[1] == 'save'):
-    model = models.ldamodel.LdaModel(corpus, id2word=dictionary, alpha='auto', num_topics=50)
+    model = models.ldamodel.LdaModel(corpus, id2word=dictionary,passes=8, alpha='auto', num_topics=50)
     model.save('twitter.lda')
 
 
@@ -55,7 +55,7 @@ doc_bow = dictionary.doc2bow(new_doc.lower().split())
 a = list(sorted(model[doc_bow], key=lambda x: x[1]))
 
 topic1= model.print_topic(a[-1][0])
-topic2= model.print_topic(a[-1][0])
+topic2= model.print_topic(a[-2][0])
 topic1 = topic1.split(" ", 1)
 topic2 = topic2.split(" ", 1)
 
