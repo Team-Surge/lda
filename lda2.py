@@ -38,7 +38,7 @@ corpus = [dictionary.doc2bow(text) for text in texts]
 #corpora.MmCorpus.serialize('deerwester.mm', corpus) # store to disk, for later use
 
 if (sys.argv[1] == 'save'):
-    model = models.ldamodel.LdaModel(corpus, id2word=dictionary,passes=8, alpha='auto', num_topics=50)
+    model = models.ldamodel.LdaModel(corpus, id2word=dictionary,passes=4, alpha='auto', num_topics=50)
     model.save('twitter.lda')
 
 
