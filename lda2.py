@@ -1,5 +1,6 @@
 import logging
 import sys
+import os
 from pprint import pprint
 from gensim import corpora, models, similarities
 from model import startModel
@@ -7,6 +8,7 @@ from model import startModel
 
 # remove common words and tokenize
 
+fpath = os.path.dirname(os.path.realpath(__file__))
 
 if (sys.argv[1] == 'save'):
     #print ("saving")
@@ -44,8 +46,8 @@ if (sys.argv[1] == 'save'):
 else:
     #print ("loading")
     dictionary = corpora.Dictionary()
-    dictionary.load('deerwester.dict') # load the dictionary, for future reference
-    model = models.LdaModel.load('twitter.lda')
+    dictionary.load(fpath + '/deerwester.dict') # load the dictionary, for future reference
+    model = models.LdaModel.load(fpath + '/twitter.lda')
 
 
 new_doc = sys.argv[2]
