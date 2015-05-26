@@ -37,7 +37,7 @@ if (sys.argv[1] == 'save'):
         print "Topic ", i, ": \n"
         print model.print_topic(i)
 
-    else:
+else:
     print ("loading")
     dictionary = corpora.Dictionary()
     dictionary.load('deerwester.dict') # load the dictionary, for future reference
