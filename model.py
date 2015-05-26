@@ -117,8 +117,15 @@ def startModel (text):
 
 
     res = json.loads(response.text)
-    print(str(res['result'][0][0]['label']))
-    print(str(res['result'][0][1]['label']))
+    try:
+        print(str(res['result'][0][0]['label']))
+    except:
+        pass
+
+    try:
+        print(str(res['result'][0][1]['label']))
+    except:
+        pass
 
 def main():
     reviews_collection = MongoClient(Settings.MONGO_CONNECTION_STRING)[Settings.REVIEWS_DATABASE][
