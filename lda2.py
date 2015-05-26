@@ -33,8 +33,11 @@ if (sys.argv[1] == 'save'):
     model = models.ldamodel.LdaModel(corpus, id2word=dictionary,passes=4, alpha='auto', num_topics=50)
     model.save('twitter.lda')
     texts.close()
-    print lda.print_topics()
-else:
+    for i in range(0, model.num_topics-1):
+        print "Topic ", i, ": \n"
+        print model.print_topic(i)
+
+    else:
     print ("loading")
     dictionary = corpora.Dictionary()
     dictionary.load('deerwester.dict') # load the dictionary, for future reference
